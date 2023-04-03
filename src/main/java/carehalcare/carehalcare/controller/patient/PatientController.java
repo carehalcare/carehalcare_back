@@ -1,6 +1,7 @@
 package carehalcare.carehalcare.controller.patient;
 
 import carehalcare.carehalcare.domain.user.User;
+import carehalcare.carehalcare.dto.patient.PatientInfoResponseDto;
 import carehalcare.carehalcare.dto.patient.PatientSetRequestDto;
 import carehalcare.carehalcare.service.patient.PatientService;
 import io.swagger.annotations.Api;
@@ -8,7 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags="환자(보호자) 등록 API")
+@Api(tags="환자(보호자) 등록 / 정보 조회 API")
 @CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 @RestController
@@ -27,6 +28,14 @@ public class PatientController {
     @PostMapping("/patients")
     public Long save(@RequestBody PatientSetRequestDto requestDto){
         return patientService.setPatient(requestDto);
+    }
+
+    /* 환자 정보 조회 */
+    @ApiOperation(value="환자 정보 조회", notes="puid: 보호자 아이디")
+    @GetMapping("/patients/info/{puid}")
+    public PatientInfoResponseDto patientInfo(@PathVariable("puid") String puserId)
+            throws Exception{
+        return patientService.getPatientInfo(puserId);
     }
 
 }
