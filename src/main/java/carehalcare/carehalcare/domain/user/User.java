@@ -31,7 +31,10 @@ public class User {
     private String sex;
 
     @Column(nullable = false)
-    private Integer code; // 0: 간병인, 1: 보호자
+    private Integer code;   // 0: 간병인, 1: 보호자
+
+    private String puserId; //보호자 아이디
+    private String cuserId; // 간병인 아이디
 
     @Builder
     public User(String userId, String password, String username, String birthDate,
@@ -43,6 +46,16 @@ public class User {
         this.phone = phone;
         this.sex = sex;
         this.code = code;
+    }
+
+    /* 환자(보호자) 등록 */
+    public void setPuserId(String puserId) {
+        this.puserId = puserId;
+    }
+
+    /* 간병인 등록 */
+    public void setCuserId(String cuserId){
+        this.cuserId = cuserId;
     }
 
     // update 메서드

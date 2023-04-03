@@ -1,4 +1,4 @@
-package carehalcare.carehalcare.domain.board;
+package carehalcare.carehalcare.domain.board.administration;
 
 import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
@@ -21,9 +21,9 @@ public class Administration extends BaseTimeEntity {
     @Column(nullable = false)
     private String puserId;
 
-    private String time;
+    private String time; // enum
 
-    private String mealStatus;
+    private String mealStatus; // enum
 
     private String medicine;
 

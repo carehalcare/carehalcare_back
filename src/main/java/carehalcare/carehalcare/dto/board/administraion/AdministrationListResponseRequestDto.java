@@ -1,6 +1,6 @@
 package carehalcare.carehalcare.dto.board.administraion;
 
-import carehalcare.carehalcare.domain.board.Administration;
+import carehalcare.carehalcare.domain.board.administration.Administration;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

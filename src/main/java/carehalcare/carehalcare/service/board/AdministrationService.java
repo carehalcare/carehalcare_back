@@ -1,7 +1,7 @@
 package carehalcare.carehalcare.service.board;
 
-import carehalcare.carehalcare.domain.board.Administration;
-import carehalcare.carehalcare.domain.board.AdministrationRepository;
+import carehalcare.carehalcare.domain.board.administration.Administration;
+import carehalcare.carehalcare.domain.board.administration.AdministrationRepository;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseRequestDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseRequestDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationSaveRequestDto;

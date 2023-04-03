@@ -1,7 +1,6 @@
-package carehalcare.carehalcare.domain.board;
+package carehalcare.carehalcare.domain.board.administration;
 
 import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseRequestDto;
-import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseRequestDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
