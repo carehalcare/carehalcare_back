@@ -19,14 +19,16 @@ public class PatientService {
     /* 환자(보호자) 아이디 조회 */
     @Transactional(readOnly = true)
     public User findByUserId(String userId){
-        return userRepository.findByUserId(userId);
+        return userRepository.findByUserId(userId)
+                .orElseThrow(IllegalArgumentException::new);
     }
 
 
     /* 환자 등록 */
     @Transactional
     public Long setPatient(PatientSetRequestDto requestDto){
-        User caregiver = userRepository.findByUserId(requestDto.getUserId());
+        User caregiver = userRepository.findByUserId(requestDto.getUserId())
+                .orElseThrow(IllegalArgumentException::new);
         caregiver.setPuserId(requestDto.getPuserId());
         return caregiver.getId();
     }
@@ -34,7 +36,8 @@ public class PatientService {
     /* 환자 정보 조회 */
     @Transactional(readOnly = true)
     public PatientInfoResponseDto getPatientInfo(String puserId){
-        PatientInfo entity = patientInfoRepository.findByUserId(puserId);
+        PatientInfo entity = patientInfoRepository.findByUserId(puserId)
+                .orElseThrow(IllegalArgumentException::new);
         return new PatientInfoResponseDto(entity);
     }
 }
