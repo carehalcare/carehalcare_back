@@ -37,4 +37,12 @@ public class AdministrationService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
         return new AdministrationResponseRequestDto(entity);
     }
+
+    /* 투약 기록 삭제 */
+    @Transactional
+    public void deleteAdministration(Long id){
+        Administration administration = administrationRepository.findById(id)
+                .orElseThrow(IllegalArgumentException::new);
+        administrationRepository.delete(administration);
+    }
 }

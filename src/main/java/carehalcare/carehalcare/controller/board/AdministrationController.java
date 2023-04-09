@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,5 +49,14 @@ public class AdministrationController {
     public AdministrationResponseRequestDto findById(
             @PathVariable("id") Long id) throws Exception{
         return administrationService.findById(id);
+    }
+
+    /* 투약 기록 삭제 */
+    @ApiOperation(value="투약 기록 삭제")
+    @ApiImplicitParam(name = "id", value = "게시글 아이디")
+    @DeleteMapping("/administrations/{id}")
+    public ResponseEntity<?> deleteAdministration(@PathVariable("id") Long id){
+        administrationService.deleteAdministration(id);
+        return ResponseEntity.noContent().build();
     }
 }
