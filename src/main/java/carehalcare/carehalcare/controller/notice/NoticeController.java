@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Api(tags="공지사항 API")
-@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 @RestController
 public class NoticeController {
@@ -22,7 +21,7 @@ public class NoticeController {
 
     /* 공지사항 리스트 조회 */
     @ApiOperation(value="공지사항 리스트 조회", notes="puid: 환자(보호자) 아이디")
-    @GetMapping("/notices/list/{puid}")
+    @GetMapping(value="/notices/list/{puid}", produces="application/json; charset=utf8")
     public List<NoticeListResponseDto> list(
             @PathVariable("puid") String puserId)throws Exception{
         return noticeService.getList(puserId);

@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags="환자(보호자) 등록 / 정보 조회 API")
-@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 @RestController
 public class PatientController {
@@ -18,7 +17,7 @@ public class PatientController {
 
     /* 환자(보호자) 아이디 조회 */
     @ApiOperation(value="환자(보호자) 아이디 조회", notes="userId는 검색할 보호자 아이디")
-    @GetMapping("/patients")
+    @GetMapping(value="/patients", produces="application/json; charset=utf8")
     public User findByUserId(@RequestParam String userId) throws Exception{
         return patientService.findByUserId(userId);
     }
@@ -32,7 +31,7 @@ public class PatientController {
 
     /* 환자 정보 조회 */
     @ApiOperation(value="환자 정보 조회", notes="puid: 보호자 아이디")
-    @GetMapping("/patients/info/{puid}")
+    @GetMapping(value="/patients/info/{puid}", produces="application/json; charset=utf8")
     public PatientInfoResponseDto patientInfo(@PathVariable("puid") String puserId)
             throws Exception{
         return patientService.getPatientInfo(puserId);

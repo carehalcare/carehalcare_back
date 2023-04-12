@@ -34,7 +34,7 @@ public class AdministrationController {
             {@ApiImplicitParam(name = "uid", value = "간병인 아이디"),
                     @ApiImplicitParam(name = "puid", value = "보호자 아이디")}
     )
-    @GetMapping("/administrations/list/{uid}/{puid}")
+    @GetMapping(value="/administrations/list/{uid}/{puid}", produces="application/json; charset=utf8")
     public List<AdministrationListResponseDto> list(
             @PathVariable("uid") String userId,
             @PathVariable("puid") String puserId) throws Exception{
@@ -44,7 +44,7 @@ public class AdministrationController {
     /* 투약 기록 상세 조회 */
     @ApiOperation(value="투약 기록 상세 조회")
     @ApiImplicitParam(name = "id", value = "게시글 아이디")
-    @GetMapping("/administrations/{id}")
+    @GetMapping(value="/administrations/{id}", produces="application/json; charset=utf8")
     public AdministrationResponseDto findById(
             @PathVariable("id") Long id) throws Exception{
         return administrationService.findById(id);

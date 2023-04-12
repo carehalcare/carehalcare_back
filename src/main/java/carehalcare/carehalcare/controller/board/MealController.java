@@ -44,7 +44,7 @@ public class MealController {
             {@ApiImplicitParam(name = "uid", value = "간병인 아이디"),
                     @ApiImplicitParam(name = "puid", value = "보호자 아이디")}
     )
-    @GetMapping("/meals/list/{uid}/{puid}")
+    @GetMapping(value="/meals/list/{uid}/{puid}", produces="application/json; charset=utf8")
     public List<MealResponseDto> mealList(
             @PathVariable("uid") String userId,
             @PathVariable("puid") String puserId)throws Exception{
@@ -54,7 +54,7 @@ public class MealController {
     /* 식사 기록 상세 조회 */
     @ApiOperation(value="식사 기록 상세 조회")
     @ApiImplicitParam(name = "id", value = "게시글 아이디")
-    @GetMapping("/meals/{id}")
+    @GetMapping(value="/meals/{id}", produces="application/json; charset=utf8")
     public MealResponseDto mealFindById(@PathVariable("id") Long id) throws Exception{
         return mealService.findById(id);
     }
