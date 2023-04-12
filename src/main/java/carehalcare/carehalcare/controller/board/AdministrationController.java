@@ -1,7 +1,7 @@
 package carehalcare.carehalcare.controller.board;
 
-import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseRequestDto;
-import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseRequestDto;
+import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseDto;
+import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationSaveRequestDto;
 import carehalcare.carehalcare.service.board.AdministrationService;
 import io.swagger.annotations.Api;
@@ -36,7 +36,7 @@ public class AdministrationController {
                     @ApiImplicitParam(name = "puid", value = "보호자 아이디")}
     )
     @GetMapping("/administrations/list/{uid}/{puid}")
-    public List<AdministrationListResponseRequestDto> list(
+    public List<AdministrationListResponseDto> list(
             @PathVariable("uid") String userId,
             @PathVariable("puid") String puserId) throws Exception{
         return administrationService.getList(userId, puserId);
@@ -46,7 +46,7 @@ public class AdministrationController {
     @ApiOperation(value="투약 기록 상세 조회")
     @ApiImplicitParam(name = "id", value = "게시글 아이디")
     @GetMapping("/administrations/{id}")
-    public AdministrationResponseRequestDto findById(
+    public AdministrationResponseDto findById(
             @PathVariable("id") Long id) throws Exception{
         return administrationService.findById(id);
     }

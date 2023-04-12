@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-public class AdministrationResponseRequestDto {
+public class AdministrationResponseDto {
     private Long id;
     private String userId;
     private String puserId;
@@ -17,7 +17,7 @@ public class AdministrationResponseRequestDto {
     private String medicine;
     private LocalDateTime createdDate;
 
-    public AdministrationResponseRequestDto(Administration entity){
+    public AdministrationResponseDto(Administration entity){
         this.id=entity.getId();
         this.userId=entity.getUserId();
         this.puserId=entity.getPuserId();

@@ -2,8 +2,8 @@ package carehalcare.carehalcare.service.board;
 
 import carehalcare.carehalcare.domain.board.administration.Administration;
 import carehalcare.carehalcare.domain.board.administration.AdministrationRepository;
-import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseRequestDto;
-import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseRequestDto;
+import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseDto;
+import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,17 +25,17 @@ public class AdministrationService {
 
     /* 투약 기록 리스트 조회 */
     @Transactional(readOnly = true)
-    public List<AdministrationListResponseRequestDto> getList(
+    public List<AdministrationListResponseDto> getList(
             String userId, String puserId){
         return this.administrationRepository.findByUserIdAndPuserIdOrderByCreatedDateDesc(userId,puserId);
     }
 
     /* 투약 기록 상세 조회 */
     @Transactional
-    public AdministrationResponseRequestDto findById(Long id){
+    public AdministrationResponseDto findById(Long id){
         Administration entity = administrationRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
-        return new AdministrationResponseRequestDto(entity);
+        return new AdministrationResponseDto(entity);
     }
 
     /* 투약 기록 삭제 */
