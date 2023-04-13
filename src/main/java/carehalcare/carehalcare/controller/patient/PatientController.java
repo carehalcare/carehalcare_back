@@ -17,7 +17,7 @@ public class PatientController {
 
     /* 환자(보호자) 아이디 조회 */
     @ApiOperation(value="환자(보호자) 아이디 조회", notes="userId는 검색할 보호자 아이디")
-    @GetMapping(value="/patients", produces="application/json; charset=utf8")
+    @GetMapping(value="/patients", produces="application/json; charset=UTF-8")
     public User findByUserId(@RequestParam String userId) throws Exception{
         return patientService.findByUserId(userId);
     }
@@ -31,7 +31,7 @@ public class PatientController {
 
     /* 환자 정보 조회 */
     @ApiOperation(value="환자 정보 조회", notes="puid: 보호자 아이디")
-    @GetMapping(value="/patients/info/{puid}", produces="application/json; charset=utf8")
+    @GetMapping(value="/patients/info/{puid}", produces="application/json; charset=UTF-8")
     public PatientInfoResponseDto patientInfo(@PathVariable("puid") String puserId)
             throws Exception{
         return patientService.getPatientInfo(puserId);

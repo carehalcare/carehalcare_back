@@ -21,7 +21,7 @@ public class NoticeController {
 
     /* 공지사항 리스트 조회 */
     @ApiOperation(value="공지사항 리스트 조회", notes="puid: 환자(보호자) 아이디")
-    @GetMapping(value="/notices/list/{puid}", produces="application/json; charset=utf8")
+    @GetMapping(value="/notices/list/{puid}", produces="application/json; charset=UTF-8")
     public List<NoticeListResponseDto> list(
             @PathVariable("puid") String puserId)throws Exception{
         return noticeService.getList(puserId);
