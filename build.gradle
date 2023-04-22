@@ -31,6 +31,11 @@ dependencies {
 	// Swagger
 	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
+	// multipartfile
+	implementation 'commons-io:commons-io:2.6'
+	implementation 'org.apache.commons:commons-lang3:3.0'
+
 }
 
 tasks.named('test') {
