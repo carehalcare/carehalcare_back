@@ -22,7 +22,6 @@ import java.util.List;
 public class MealController {
 
     private final MealService mealService;
-    private final MealFileHandler mealFileHandler;
 
     /* 식사 기록 저장 */
     @PostMapping(value = "/meals")
