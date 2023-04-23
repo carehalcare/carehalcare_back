@@ -1,5 +1,6 @@
-package carehalcare.carehalcare.domain.board;
+package carehalcare.carehalcare.domain.board.activity;
 
+import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Activity {
+public class Activity extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,7 +19,7 @@ public class Activity {
     private String userId;
 
     @Column(nullable = false)
-    private String pUserId;
+    private String puserId;
 
     private String rehabilitation;
 
@@ -27,10 +28,10 @@ public class Activity {
     private String position;
 
     @Builder
-    public Activity (String userId, String pUserId, String rehabilitation,
+    public Activity (String userId, String puserId, String rehabilitation,
                      String walkingAssistance, String position){
         this.userId = userId;
-        this.pUserId = pUserId;
+        this.puserId = puserId;
         this.rehabilitation = rehabilitation;
         this.walkingAssistance = walkingAssistance;
         this.position=position;
