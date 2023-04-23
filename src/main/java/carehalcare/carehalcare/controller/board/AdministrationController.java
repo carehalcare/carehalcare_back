@@ -1,6 +1,5 @@
 package carehalcare.carehalcare.controller.board;
 
-import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationSaveRequestDto;
 import carehalcare.carehalcare.service.board.AdministrationService;
@@ -35,7 +34,7 @@ public class AdministrationController {
                     @ApiImplicitParam(name = "puid", value = "보호자 아이디")}
     )
     @GetMapping(value="/administrations/list/{uid}/{puid}", produces="application/json; charset=UTF-8")
-    public List<AdministrationListResponseDto> list(
+    public List<AdministrationResponseDto> list(
             @PathVariable("uid") String userId,
             @PathVariable("puid") String puserId) throws Exception{
         return administrationService.getList(userId, puserId);

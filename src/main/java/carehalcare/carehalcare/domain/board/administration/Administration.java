@@ -21,9 +21,9 @@ public class Administration extends BaseTimeEntity {
     @Column(nullable = false)
     private String puserId;
 
-    private String time; // enum
+    private String time;
 
-    private String mealStatus; // enum
+    private String mealStatus;
 
     private String medicine;
 

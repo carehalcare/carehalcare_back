@@ -2,7 +2,6 @@ package carehalcare.carehalcare.service.board;
 
 import carehalcare.carehalcare.domain.board.administration.Administration;
 import carehalcare.carehalcare.domain.board.administration.AdministrationRepository;
-import carehalcare.carehalcare.dto.board.administraion.AdministrationListResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +24,7 @@ public class AdministrationService {
 
     /* 투약 기록 리스트 조회 */
     @Transactional(readOnly = true)
-    public List<AdministrationListResponseDto> getList(
+    public List<AdministrationResponseDto> getList(
             String userId, String puserId){
         return this.administrationRepository.findByUserIdAndPuserIdOrderByCreatedDateDesc(userId,puserId);
     }
