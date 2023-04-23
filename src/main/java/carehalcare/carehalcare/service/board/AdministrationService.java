@@ -30,7 +30,7 @@ public class AdministrationService {
     }
 
     /* 투약 기록 상세 조회 */
-    @Transactional
+    @Transactional(readOnly = true)
     public AdministrationResponseDto findById(Long id){
         Administration entity = administrationRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
