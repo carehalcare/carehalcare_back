@@ -1,5 +1,6 @@
-package carehalcare.carehalcare.domain.board;
+package carehalcare.carehalcare.domain.board.sleepstate;
 
+import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class SleepState {
+public class SleepState extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,16 +19,16 @@ public class SleepState {
     private String userId;
 
     @Column(nullable = false)
-    private String pUserId;
+    private String puserId;
 
     private String state;
 
     private String content;
 
     @Builder
-    public SleepState(String userId, String pUserId, String state, String content){
+    public SleepState(String userId, String puserId, String state, String content){
         this.userId = userId;
-        this.pUserId = pUserId;
+        this.puserId = puserId;
         this.state = state;
         this.content = content;
     }
