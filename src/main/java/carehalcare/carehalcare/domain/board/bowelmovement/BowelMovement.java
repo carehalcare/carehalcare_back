@@ -1,5 +1,6 @@
-package carehalcare.carehalcare.domain.board;
+package carehalcare.carehalcare.domain.board.bowelmovement;
 
+import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class BowelMovement {
+public class BowelMovement extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,16 +19,16 @@ public class BowelMovement {
     private String userId;
 
     @Column(nullable = false)
-    private String pUserId;
+    private String puserId;
 
-    private Integer count;
+    private Long count;
 
     private String content;
 
     @Builder
-    public BowelMovement(String userId, String pUserId, Integer count, String content){
+    public BowelMovement(String userId, String puserId, Long count, String content){
         this.userId = userId;
-        this.pUserId = pUserId;
+        this.puserId = puserId;
         this.count = count;
         this.content = content;
     }
