@@ -39,6 +39,7 @@ public class PatientCleanlinessService {
     }
 
     /* 환자 청결 기록 삭제 */
+    @Transactional
     public void deletePatientCleanliness(Long id){
         PatientCleanliness patientCleanliness = patientCleanlinessRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));

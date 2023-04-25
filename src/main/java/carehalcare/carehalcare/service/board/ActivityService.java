@@ -38,6 +38,7 @@ public class ActivityService {
     }
 
     /* 활동 기록 삭제 */
+    @Transactional
     public void deleteActivity(Long id){
         Activity activity = activityRepository.findById(id)
                 .orElseThrow(IllegalArgumentException::new);

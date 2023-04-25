@@ -38,6 +38,7 @@ public class BowelMovementService {
     }
 
     /* 배변 기록 삭제 */
+    @Transactional
     public void deleteBowelMovement(Long id){
         BowelMovement bowelMovement = bowelMovementRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));

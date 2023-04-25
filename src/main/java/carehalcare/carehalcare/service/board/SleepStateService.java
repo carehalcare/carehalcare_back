@@ -38,6 +38,7 @@ public class SleepStateService {
     }
 
     /* 수면 상태 기록 삭제 */
+    @Transactional
     public void deleteSleepState(Long id){
         SleepState sleepState = sleepStateRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
