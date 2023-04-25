@@ -1,5 +1,6 @@
 package carehalcare.carehalcare.domain.board.surroundingcleanliness;
 
+import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class SurroundingCleanliness {
+public class SurroundingCleanliness extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,16 +19,16 @@ public class SurroundingCleanliness {
     private String userId;
 
     @Column(nullable = false)
-    private String pUserId;
+    private String puserId;
 
     private String cleanliness;
 
     private String content;
 
     @Builder
-    public SurroundingCleanliness(String userId, String pUserId, String cleanliness, String content){
+    public SurroundingCleanliness(String userId, String puserId, String cleanliness, String content){
         this.userId = userId;
-        this.pUserId = pUserId;
+        this.puserId = puserId;
         this.cleanliness = cleanliness;
         this.content = content;
     }
