@@ -1,4 +1,4 @@
-package carehalcare.carehalcare.domain.board;
+package carehalcare.carehalcare.domain.board.surroundingcleanliness;
 
 import lombok.Builder;
 import lombok.Getter;

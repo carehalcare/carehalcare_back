@@ -1,13 +1,12 @@
 package carehalcare.carehalcare.controller.board;
 
 import carehalcare.carehalcare.dto.board.sleepstate.SleepStateResponseDto;
-import carehalcare.carehalcare.dto.board.sleepstate.SleepStateSaveRequsetDto;
+import carehalcare.carehalcare.dto.board.sleepstate.SleepStateSaveRequestDto;
 import carehalcare.carehalcare.service.board.SleepStateService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +23,7 @@ public class SleepStateController {
     /* 수면 상태 기록 저장 */
     @ApiOperation(value="수면 상태 기록 저장", notes="puserId는 보호자 아이디, userId는 간병인 아이디")
     @PostMapping("/sleepstates")
-    public Long saveSleepState(@RequestBody SleepStateSaveRequsetDto requsetDto){
+    public Long saveSleepState(@RequestBody SleepStateSaveRequestDto requsetDto){
         return sleepStateService.saveSleepState(requsetDto);
     }
 

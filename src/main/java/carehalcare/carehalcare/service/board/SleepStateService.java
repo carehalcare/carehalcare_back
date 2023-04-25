@@ -3,7 +3,7 @@ package carehalcare.carehalcare.service.board;
 import carehalcare.carehalcare.domain.board.sleepstate.SleepState;
 import carehalcare.carehalcare.domain.board.sleepstate.SleepStateRepository;
 import carehalcare.carehalcare.dto.board.sleepstate.SleepStateResponseDto;
-import carehalcare.carehalcare.dto.board.sleepstate.SleepStateSaveRequsetDto;
+import carehalcare.carehalcare.dto.board.sleepstate.SleepStateSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class SleepStateService {
 
     /* 수면 상태 기록 저장 */
     @Transactional
-    public Long saveSleepState(SleepStateSaveRequsetDto requestDto){
+    public Long saveSleepState(SleepStateSaveRequestDto requestDto){
         return sleepStateRepository.save(requestDto.toEntity()).getId();
     }
 

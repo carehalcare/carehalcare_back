@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class SleepStateSaveRequsetDto {
+public class SleepStateSaveRequestDto {
     @ApiModelProperty(name  = "간병인 id", example = "userid2")
     private String userId;
 
@@ -22,7 +22,7 @@ public class SleepStateSaveRequsetDto {
     private String content;
 
     @Builder
-    public SleepStateSaveRequsetDto(String userId, String puserId,
+    public SleepStateSaveRequestDto(String userId, String puserId,
                                     String state, String content){
         this.userId =  userId;
         this.puserId = puserId;
