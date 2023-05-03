@@ -22,12 +22,12 @@ public class MealImageResponseDto {
     private String encodedString;
 
 
-    public MealImageResponseDto(MealImage entity){
-        this.id=entity.getId();
-        this.originalFilename=entity.getOriginalFilename();
-        this.storeFilename=entity.getStoreFilename();
-        this.filePath=entity.getFilePath();
-        this.mealId=entity.getMeal().getId();
+    public MealImageResponseDto(MealImage mealImage){
+        this.id=mealImage.getId();
+        this.originalFilename=mealImage.getOriginalFilename();
+        this.storeFilename=mealImage.getStoreFilename();
+        this.filePath=mealImage.getFilePath();
+        this.mealId=mealImage.getMeal().getId();
 
         try{
             InputStream inputStream = new FileInputStream(this.filePath);

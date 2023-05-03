@@ -1,8 +1,5 @@
 package carehalcare.carehalcare.domain.board.meal;
 
-import carehalcare.carehalcare.domain.board.meal.Meal;
-import carehalcare.carehalcare.domain.board.meal.MealImage;
-import carehalcare.carehalcare.domain.board.meal.MealImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
