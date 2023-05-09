@@ -1,4 +1,4 @@
-package carehalcare.carehalcare.dto.patient;
+package carehalcare.carehalcare.dto.user;
 
 import lombok.Builder;
 import lombok.Getter;

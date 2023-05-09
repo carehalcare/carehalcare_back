@@ -1,6 +1,5 @@
-package carehalcare.carehalcare.dto.patient;
+package carehalcare.carehalcare.dto.user;
 
-import carehalcare.carehalcare.domain.board.administration.Administration;
 import carehalcare.carehalcare.domain.user.PatientInfo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

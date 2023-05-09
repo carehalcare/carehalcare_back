@@ -1,11 +1,11 @@
-package carehalcare.carehalcare.service.patient;
+package carehalcare.carehalcare.service.user;
 
 import carehalcare.carehalcare.domain.user.PatientInfo;
 import carehalcare.carehalcare.domain.user.PatientInfoRepository;
 import carehalcare.carehalcare.domain.user.User;
 import carehalcare.carehalcare.domain.user.UserRepository;
-import carehalcare.carehalcare.dto.patient.PatientInfoResponseDto;
-import carehalcare.carehalcare.dto.patient.PatientSetRequestDto;
+import carehalcare.carehalcare.dto.user.PatientInfoResponseDto;
+import carehalcare.carehalcare.dto.user.PatientSetRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
