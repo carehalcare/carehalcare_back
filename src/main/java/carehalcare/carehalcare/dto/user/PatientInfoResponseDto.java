@@ -13,7 +13,7 @@ public class PatientInfoResponseDto {
     private String userId;
     private String pname;
     private String psex;
-    private String pBirthDate;
+    private String pbirthDate;
     private String disease;
     private String hospital;
     private String medicine;
@@ -25,7 +25,7 @@ public class PatientInfoResponseDto {
         this.userId=entity.getUserId();
         this.pname=entity.getPname();
         this.psex=entity.getPsex();
-        this.pBirthDate=entity.getPBirthDate();
+        this.pbirthDate=entity.getPbirthDate();
         this.disease=entity.getDisease();
         this.hospital=entity.getHospital();
         this.medicine=entity.getMedicine();

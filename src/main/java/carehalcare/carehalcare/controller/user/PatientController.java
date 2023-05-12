@@ -2,6 +2,8 @@ package carehalcare.carehalcare.controller.user;
 
 import carehalcare.carehalcare.domain.user.User;
 import carehalcare.carehalcare.dto.user.PatientInfoResponseDto;
+import carehalcare.carehalcare.dto.user.PatientInfoSaveRequestDto;
+import carehalcare.carehalcare.dto.user.PatientInfoUpdateRequestDto;
 import carehalcare.carehalcare.dto.user.PatientSetRequestDto;
 import carehalcare.carehalcare.service.user.PatientService;
 import io.swagger.annotations.Api;
@@ -9,7 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags="[간병인용] 환자(보호자) 등록 / 정보 조회 API")
+@Api(tags="환자(보호자) 등록, 환자 정보 API")
 @RequiredArgsConstructor
 @RestController
 public class PatientController {
@@ -29,12 +31,27 @@ public class PatientController {
         return patientService.setPatient(requestDto);
     }
 
+
+    /* 환자 정보 저장 */
+    @ApiOperation(value="환자 정보 저장")
+    @PostMapping("/patients/info")
+    public Long savePatientInfo(@RequestBody PatientInfoSaveRequestDto requestDto){
+        return patientService.savePatientInfo(requestDto);
+    }
+
     /* 환자 정보 조회 */
     @ApiOperation(value="환자 정보 조회", notes="puid: 보호자 아이디")
-    @GetMapping(value="/patients/info/{puid}")
+    @GetMapping("/patients/info/{puid}")
     public PatientInfoResponseDto getpatientInfo(@PathVariable("puid") String puserId)
             throws Exception{
         return patientService.getPatientInfo(puserId);
+    }
+
+    /* 환자 정보 수정 */
+    @ApiOperation(value="환자 정보 수정")
+    @PutMapping("/patients/info")
+    public Long updatePatientInfo(@RequestBody PatientInfoUpdateRequestDto requestDto){
+        return patientService.updatePatientInfo(requestDto);
     }
 
 }

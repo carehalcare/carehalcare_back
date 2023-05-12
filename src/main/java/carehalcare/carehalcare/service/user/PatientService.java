@@ -5,6 +5,8 @@ import carehalcare.carehalcare.domain.user.PatientInfoRepository;
 import carehalcare.carehalcare.domain.user.User;
 import carehalcare.carehalcare.domain.user.UserRepository;
 import carehalcare.carehalcare.dto.user.PatientInfoResponseDto;
+import carehalcare.carehalcare.dto.user.PatientInfoSaveRequestDto;
+import carehalcare.carehalcare.dto.user.PatientInfoUpdateRequestDto;
 import carehalcare.carehalcare.dto.user.PatientSetRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,12 @@ public class PatientService {
         return caregiver.getId();
     }
 
+    /* 환자 정보 저장 */
+    @Transactional
+    public Long savePatientInfo(PatientInfoSaveRequestDto requestDto){
+        return patientInfoRepository.save(requestDto.toEntity()).getId();
+    }
+
     /* 환자 정보 조회 */
     @Transactional(readOnly = true)
     public PatientInfoResponseDto getPatientInfo(String puserId){
@@ -40,4 +48,13 @@ public class PatientService {
                 .orElseThrow(IllegalArgumentException::new);
         return new PatientInfoResponseDto(entity);
     }
+
+    /* 환자 정보 수정 */
+    @Transactional
+    public Long updatePatientInfo(PatientInfoUpdateRequestDto requestDto){
+        PatientInfo patientInfo = patientInfoRepository.findByUserId(requestDto.getUserId())
+                .orElseThrow(IllegalArgumentException::new);
+        return patientInfo.updatePatientInfo(requestDto).getId();
+    }
+
 }
