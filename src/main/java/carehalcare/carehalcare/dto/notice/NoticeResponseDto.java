@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-public class NoticeListResponseDto {
+public class NoticeResponseDto {
     private Long id;
     private String userId;
     private String content;
     private LocalDateTime createdDate;
 
-    public NoticeListResponseDto(Notice entity){
+    public NoticeResponseDto(Notice entity){
         this.id=entity.getId();
         this.userId=entity.getUserId();
         this.content=entity.getContent();
