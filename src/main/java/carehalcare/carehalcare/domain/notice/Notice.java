@@ -1,6 +1,7 @@
 package carehalcare.carehalcare.domain.notice;
 
 import carehalcare.carehalcare.domain.BaseTimeEntity;
+import carehalcare.carehalcare.dto.notice.NoticeUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,10 @@ public class Notice extends BaseTimeEntity {
     public Notice(String userId, String pUserId, String content){
         this.userId = userId;
         this.content = content;
+    }
+
+    public Notice updateNotice(NoticeUpdateRequestDto requestDto){
+        this.content=requestDto.getContent();
+        return this;
     }
 }

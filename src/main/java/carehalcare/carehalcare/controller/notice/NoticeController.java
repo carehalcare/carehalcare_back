@@ -2,6 +2,7 @@ package carehalcare.carehalcare.controller.notice;
 
 import carehalcare.carehalcare.dto.notice.NoticeResponseDto;
 import carehalcare.carehalcare.dto.notice.NoticeSaveRequestDto;
+import carehalcare.carehalcare.dto.notice.NoticeUpdateRequestDto;
 import carehalcare.carehalcare.service.notice.NoticeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,5 +47,12 @@ public class NoticeController {
     public ResponseEntity<?> deleteNotice(@PathVariable("id") Long id) throws Exception{
         noticeService.deleteNotice(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /* 공지사항 수정 */
+    @ApiOperation(value="공지사항 수정")
+    @PutMapping("/notices")
+    public Long updateNotice(@RequestBody NoticeUpdateRequestDto requestDto){
+        return noticeService.updateNotice(requestDto);
     }
 }
