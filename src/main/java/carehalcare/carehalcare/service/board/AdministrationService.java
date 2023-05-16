@@ -26,7 +26,7 @@ public class AdministrationService {
     @Transactional(readOnly = true)
     public List<AdministrationResponseDto> getList(
             String userId, String puserId){
-        return this.administrationRepository.findByUserIdAndPuserIdOrderByCreatedDateDesc(userId,puserId);
+        return this.administrationRepository.findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(userId,puserId);
     }
 
     /* 투약 기록 상세 조회 */

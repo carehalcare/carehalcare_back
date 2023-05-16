@@ -36,7 +36,7 @@ public class MealService {
     @Transactional(readOnly = true)
     public List<MealResponseDto> getMealList(
             String userId, String puserId){
-        return this.mealRepository.findByUserIdAndPuserIdOrderByCreatedDateDesc(userId, puserId);
+        return this.mealRepository.findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(userId, puserId);
     }
 
     /* 식사 기록 상세 조회 */

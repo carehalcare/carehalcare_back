@@ -15,7 +15,7 @@ public class PatientCleanlinessResponseDto {
     private String cleanliness;
     private String part;
     private String content;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
 
     public PatientCleanlinessResponseDto(PatientCleanliness entity){
         this.id= entity.getId();
@@ -24,6 +24,6 @@ public class PatientCleanlinessResponseDto {
         this.cleanliness=entity.getCleanliness();
         this.part=entity.getPart();
         this.content=entity.getContent();
-        this.createdDate=entity.getCreatedDate();
+        this.createdDateTime=entity.getCreatedDateTime();
     }
 }

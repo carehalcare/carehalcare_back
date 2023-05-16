@@ -26,7 +26,7 @@ public class BowelMovementService {
     public List<BowelMovementResponseDto> getBowelMovementList(
             String userId, String puserId){
         return this.bowelMovementRepository
-                .findByUserIdAndPuserIdOrderByCreatedDateDesc(userId, puserId);
+                .findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(userId, puserId);
     }
 
     /* 배변 기록 상세 조회 */

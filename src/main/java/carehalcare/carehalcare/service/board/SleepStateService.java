@@ -26,7 +26,7 @@ public class SleepStateService {
     public List<SleepStateResponseDto> getSleepStateList(
             String userId, String puserId){
         return this.sleepStateRepository
-                .findByUserIdAndPuserIdOrderByCreatedDateDesc(userId, puserId);
+                .findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(userId, puserId);
     }
 
     /* 수면 상태 기록 상세 조회 */

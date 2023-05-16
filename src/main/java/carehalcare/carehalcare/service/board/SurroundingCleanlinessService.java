@@ -27,7 +27,7 @@ public class SurroundingCleanlinessService {
     public List<SurroundingCleanlinessResponseDto> getSurroundingCleanlinessList(
             String userId, String puserId){
         return this.surroundingCleanlinessRepository
-                .findByUserIdAndPuserIdOrderByCreatedDateDesc(userId, puserId);
+                .findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(userId, puserId);
     }
 
     /* 주변 환경 청결 기록 상세 조회 */

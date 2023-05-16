@@ -35,7 +35,7 @@ public class WalkService {
     @Transactional(readOnly = true)
     public List<WalkResponseDto> getWalkList(
             String userId, String puserId){
-        return this.walkRepository.findByUserIdAndPuserIdOrderByCreatedDateDesc(userId, puserId);
+        return this.walkRepository.findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(userId, puserId);
     }
 
     /* 산책 기록 상세 조회 */

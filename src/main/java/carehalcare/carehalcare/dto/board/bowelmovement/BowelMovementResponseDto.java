@@ -14,7 +14,7 @@ public class BowelMovementResponseDto {
     private String puserId;
     private Long count;
     private String content;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
 
     public BowelMovementResponseDto(BowelMovement entity){
         this.id=entity.getId();
@@ -22,6 +22,6 @@ public class BowelMovementResponseDto {
         this.puserId=entity.getPuserId();
         this.count=entity.getCount();
         this.content=entity.getContent();
-        this.createdDate=entity.getCreatedDate();
+        this.createdDateTime=entity.getCreatedDateTime();
     }
 }

@@ -15,13 +15,13 @@ public class WalkResponseDto {
     private String userId;
     private String puserId;
     private List<WalkImageResponseDto> images;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
 
     public WalkResponseDto(Walk walk){
         this.id=walk.getId();
         this.userId=walk.getUserId();
         this.puserId=walk.getPuserId();
-        this.createdDate=walk.getCreatedDate();
+        this.createdDateTime=walk.getCreatedDateTime();
         this.images=walk.getWalkImage()
                 .stream()
                 .map(WalkImageResponseDto::new)

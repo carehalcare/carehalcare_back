@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface SleepStateRepository extends JpaRepository<SleepState, Long> {
-    List<SleepStateResponseDto> findByUserIdAndPuserIdOrderByCreatedDateDesc(String userId, String puserId);
+    List<SleepStateResponseDto> findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(String userId, String puserId);
 }

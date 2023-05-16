@@ -15,7 +15,7 @@ public class ActivityResponseDto {
     private String rehabilitation;
     private String walkingAssistance;
     private String position;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
 
     public ActivityResponseDto(Activity entity){
         this.id=entity.getId();
@@ -24,6 +24,6 @@ public class ActivityResponseDto {
         this.rehabilitation=entity.getRehabilitation();
         this.walkingAssistance=entity.getWalkingAssistance();
         this.position=entity.getPosition();
-        this.createdDate=entity.getCreatedDate();
+        this.createdDateTime=entity.getCreatedDateTime();
     }
 }

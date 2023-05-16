@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface WalkRepository extends JpaRepository<Walk, Long> {
-    List<WalkResponseDto> findByUserIdAndPuserIdOrderByCreatedDateDesc(String userId, String puserId);
+    List<WalkResponseDto> findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(String userId, String puserId);
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PatientCleanlinessRepository extends JpaRepository<PatientCleanliness, Long> {
-    List<PatientCleanlinessResponseDto> findByUserIdAndPuserIdOrderByCreatedDateDesc(String userId, String puserId);
+    List<PatientCleanlinessResponseDto> findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(String userId, String puserId);
 }

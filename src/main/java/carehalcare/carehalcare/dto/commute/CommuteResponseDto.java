@@ -15,7 +15,7 @@ public class CommuteResponseDto {
     private String category;
     private String date;
     private String time;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
 
     public CommuteResponseDto(Commute commute){
         this.id=commute.getId();
@@ -24,6 +24,6 @@ public class CommuteResponseDto {
         this.category=commute.getCategory();
         this.date=commute.getDate();
         this.time=commute.getTime();
-        this.createdDate=commute.getCreatedDate();
+        this.createdDateTime=commute.getCreatedDateTime();
     }
 }

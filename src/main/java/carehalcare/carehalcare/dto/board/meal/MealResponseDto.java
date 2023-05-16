@@ -17,7 +17,7 @@ public class MealResponseDto {
     private String puserId;
     private String content;
     private List<MealImageResponseDto> images;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
 
 
     public MealResponseDto(Meal meal){
@@ -25,7 +25,7 @@ public class MealResponseDto {
         this.userId=meal.getUserId();
         this.puserId=meal.getPuserId();
         this.content=meal.getContent();
-        this.createdDate=meal.getCreatedDate();
+        this.createdDateTime=meal.getCreatedDateTime();
         this.images=meal.getImages()
                 .stream()
                 .map(MealImageResponseDto::new)

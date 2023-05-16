@@ -25,7 +25,7 @@ public class NoticeService {
     /* 공지사항 리스트 조회 */
     @Transactional(readOnly = true)
     public List<NoticeResponseDto> getList(String puserId){
-        return noticeRepository.findByUserIdOrderByCreatedDateDesc(puserId);
+        return noticeRepository.findByUserIdOrderByCreatedDateTimeDesc(puserId);
     }
 
     /* 공지사항 상세 조회 */

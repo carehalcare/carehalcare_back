@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface BowelMovementRepository extends JpaRepository<BowelMovement, Long> {
-    List<BowelMovementResponseDto> findByUserIdAndPuserIdOrderByCreatedDateDesc(String userId, String puserId);
+    List<BowelMovementResponseDto> findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(String userId, String puserId);
 }

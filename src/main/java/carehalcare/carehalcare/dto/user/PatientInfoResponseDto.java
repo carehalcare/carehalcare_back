@@ -18,7 +18,8 @@ public class PatientInfoResponseDto {
     private String hospital;
     private String medicine;
     private String remark;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdDateTime;
+    private LocalDateTime modifiedDateTime;
 
     public PatientInfoResponseDto(PatientInfo entity){
         this.id=entity.getId();
@@ -30,6 +31,7 @@ public class PatientInfoResponseDto {
         this.hospital=entity.getHospital();
         this.medicine=entity.getMedicine();
         this.remark=entity.getRemark();
-        this.createdDate=entity.getCreatedDate();
+        this.createdDateTime=entity.getCreatedDateTime();
+        this.modifiedDateTime=entity.getModifiedDateTime();
     }
 }

@@ -27,7 +27,7 @@ public class PatientCleanlinessService {
     public List<PatientCleanlinessResponseDto> getPatientCleanlinessList(
             String userId, String puserId){
         return this.patientCleanlinessRepository
-                .findByUserIdAndPuserIdOrderByCreatedDateDesc(userId, puserId);
+                .findByUserIdAndPuserIdOrderByCreatedDateTimeDesc(userId, puserId);
     }
 
     /* 환자 청결 기록 상세 조회 */
