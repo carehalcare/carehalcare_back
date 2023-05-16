@@ -1,5 +1,6 @@
 package carehalcare.carehalcare.domain.commute;
 
+import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Commute {
+public class Commute extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,7 +19,7 @@ public class Commute {
     private String userId;
 
     @Column(nullable = false)
-    private String pUserId;
+    private String puserId;
 
     @Column(nullable = false)
     private String category;
@@ -28,10 +29,10 @@ public class Commute {
     private String time;
 
     @Builder
-    public Commute(String userId, String pUserId, String category,
+    public Commute(String userId, String puserId, String category,
                                   String date, String time){
         this.userId = userId;
-        this.pUserId = pUserId;
+        this.puserId = puserId;
         this.category = category;
         this.date = date;
         this.time = time;
