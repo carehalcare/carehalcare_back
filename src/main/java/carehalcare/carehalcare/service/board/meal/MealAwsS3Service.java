@@ -34,7 +34,7 @@ public class MealAwsS3Service {
         List<MealImage> fileNameList = new ArrayList<>();
 
         multipartFiles.forEach(file -> {
-            String fileName = createFileName(file.getOriginalFilename());
+            String fileName = "meal/" + createFileName(file.getOriginalFilename());
             ObjectMetadata objectMetadata = new ObjectMetadata();
             objectMetadata.setContentLength(file.getSize());
             objectMetadata.setContentType(file.getContentType());
