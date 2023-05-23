@@ -1,4 +1,4 @@
-package carehalcare.carehalcare.service.board;
+package carehalcare.carehalcare.service.board.meal;
 
 import carehalcare.carehalcare.domain.board.meal.*;
 import carehalcare.carehalcare.dto.board.meal.MealResponseDto;
@@ -18,11 +18,13 @@ public class MealService {
     private final MealRepository mealRepository;
     private final MealImageRepository mealImageRepository;
     private final MealFileHandler mealFileHandler;
+    private final MealAwsS3Service mealAwsS3Service;
 
     /* 식사 기록 저장 */
     @Transactional
     public Long saveMeal(MealSaveRequestDto requestDto, List<MultipartFile> images) throws IOException{
-        List<MealImage> mealImages = mealFileHandler.storeFiles(images);
+        //List<MealImage> mealImages = mealFileHandler.storeFiles(images);
+        List<MealImage> mealImages = mealAwsS3Service.uploadFile(images);
         Meal meal = requestDto.toEntity();
 
         for(MealImage image:mealImages){
@@ -51,7 +53,13 @@ public class MealService {
     @Transactional
     public void deleteMeal(Long id){
         Meal meal = mealRepository.findById(id)
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+
+        List<MealImage> mealImages = mealImageRepository.findAllByMeal(meal);
+
+        for(MealImage image:mealImages){
+            mealAwsS3Service.deleteFile(image.getStoreFilename());
+        }
         mealRepository.delete(meal);
     }
 }

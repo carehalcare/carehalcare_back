@@ -1,10 +1,9 @@
 package carehalcare.carehalcare.controller.board;
 
-import carehalcare.carehalcare.domain.board.meal.MealFileHandler;
 import carehalcare.carehalcare.dto.board.meal.MealImageVO;
 import carehalcare.carehalcare.dto.board.meal.MealResponseDto;
 import carehalcare.carehalcare.dto.board.meal.MealSaveRequestDto;
-import carehalcare.carehalcare.service.board.MealService;
+import carehalcare.carehalcare.service.board.meal.MealService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
