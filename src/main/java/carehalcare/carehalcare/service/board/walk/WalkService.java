@@ -1,4 +1,4 @@
-package carehalcare.carehalcare.service.board;
+package carehalcare.carehalcare.service.board.walk;
 
 import carehalcare.carehalcare.domain.board.walk.*;
 import carehalcare.carehalcare.dto.board.walk.WalkResponseDto;
@@ -17,11 +17,13 @@ public class WalkService {
     private final WalkRepository walkRepository;
     private final WalkImageRepository walkImageRepository;
     private final WalkFileHandler walkFileHandler;
+    private final WalkAwsS3Service walkAwsS3Service;
 
     /* 산책 기록 저장 */
     @Transactional
     public Long saveWalk(WalkSaveRequestDto requestDto, List<MultipartFile> images) throws IOException{
-        List<WalkImage> walkImages = walkFileHandler.storeFiles(images);
+        //List<WalkImage> walkImages = walkFileHandler.storeFiles(images);
+        List<WalkImage> walkImages = walkAwsS3Service.uploadFile(images);
         Walk walk = requestDto.toEntity();
 
         for(WalkImage image:walkImages){
@@ -51,6 +53,12 @@ public class WalkService {
     public void deleteWalk(Long id){
         Walk walk = walkRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+id));
+
+        List<WalkImage> walkImages = walkImageRepository.findAllByWalk(walk);
+
+        for(WalkImage image:walkImages){
+            walkAwsS3Service.deleteFile(image.getStoreFilename());
+        }
         walkRepository.delete(walk);
     }
 }

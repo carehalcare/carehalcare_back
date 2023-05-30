@@ -3,7 +3,7 @@ package carehalcare.carehalcare.controller.board;
 import carehalcare.carehalcare.dto.board.walk.WalkImageVO;
 import carehalcare.carehalcare.dto.board.walk.WalkResponseDto;
 import carehalcare.carehalcare.dto.board.walk.WalkSaveRequestDto;
-import carehalcare.carehalcare.service.board.WalkService;
+import carehalcare.carehalcare.service.board.walk.WalkService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
