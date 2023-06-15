@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/h2-console/**", "/favicon.ico").permitAll()
                 //.antMatchers("/login", "/signup", "/**").permitAll()
-                .antMatchers("/login", "/signup").permitAll()
+                .antMatchers("/login", "/signup", "/users").permitAll()
                 .antMatchers("/api/**").hasRole("USER")
                 //.anyRequest().hasRole("USER")
                 //.anyRequest().authenticated()
@@ -56,7 +56,7 @@ public class SecurityConfig {
                 /* REST API 사용 시 csrf 예외 처리 */
                 .csrf().ignoringAntMatchers("/h2-console/**", "/favicon.ico")
                 //.ignoringAntMatchers("/login", "/signup", "/**")
-                .ignoringAntMatchers("/login", "/signup", "/api/**")
+                .ignoringAntMatchers("/login", "/signup", "/users", "/api/**")
 
                 .and()
                 .addFilterBefore(new JwtFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class)

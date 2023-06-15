@@ -77,5 +77,15 @@ public class UserService {
         return tokenDto;
     }
 
+    /* 사용자 아이디 조회 - 회원가입 시 아이디 중복 여부 확인용 */
+    @Transactional(readOnly = true)
+    public UserResponseDto findByUserId(String userId){
+        Optional<User> user = userRepository.findByUserId(userId);
+        if (!user.isEmpty()){
+            return new UserResponseDto(user.get());
+        } else{
+            return null;
+        }
+    }
 
 }
