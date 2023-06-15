@@ -9,11 +9,13 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Api(tags="투약 기록 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class AdministrationController {

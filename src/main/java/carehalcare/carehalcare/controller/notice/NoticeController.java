@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Api(tags="공지사항 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class NoticeController {

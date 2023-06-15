@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags="환자(보호자) 등록, 환자 정보 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class PatientController {

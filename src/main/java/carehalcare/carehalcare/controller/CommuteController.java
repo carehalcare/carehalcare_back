@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Api(tags="출퇴근 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class CommuteController {

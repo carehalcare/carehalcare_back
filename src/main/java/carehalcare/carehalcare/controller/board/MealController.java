@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Api(tags="식사 기록 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class MealController {

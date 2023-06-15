@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Api(tags="산책 기록 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class WalkController {

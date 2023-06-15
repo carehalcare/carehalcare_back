@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @Api(tags="간병인 등록 / 정보 조회 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class CaregiverController {

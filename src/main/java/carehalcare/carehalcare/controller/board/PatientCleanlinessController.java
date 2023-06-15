@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Api(tags="환자 청결 기록 API")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 @RestController
 public class PatientCleanlinessController {
