@@ -14,6 +14,7 @@ public class SurroundingCleanlinessResponseDto {
     private String puserId;
     private String cleanliness;
     private String content;
+    private String category;
     private LocalDateTime createdDateTime;
 
     public SurroundingCleanlinessResponseDto(SurroundingCleanliness entity){
@@ -22,6 +23,7 @@ public class SurroundingCleanlinessResponseDto {
         this.puserId=entity.getPuserId();
         this.cleanliness=entity.getCleanliness();
         this.content=entity.getContent();
+        this.category=entity.getCategory();
         this.createdDateTime=entity.getCreatedDateTime();
     }
 }

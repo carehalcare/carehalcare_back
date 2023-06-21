@@ -15,6 +15,7 @@ public class SleepStateResponseDto {
     private String puserId;
     private String state;
     private String content;
+    private String category;
     private LocalDateTime createdDateTime;
 
     public SleepStateResponseDto(SleepState entity){
@@ -23,6 +24,7 @@ public class SleepStateResponseDto {
         this.puserId=entity.getPuserId();
         this.state=entity.getState();
         this.content=entity.getContent();
+        this.category=entity.getCategory();
         this.createdDateTime=entity.getCreatedDateTime();
     }
 }

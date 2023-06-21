@@ -36,6 +36,7 @@ public class BowelMovementSaveRequestDto {
                 .puserId(puserId)
                 .count(count)
                 .content(content)
+                .category("bowelmovements")
                 .build();
     }
 }

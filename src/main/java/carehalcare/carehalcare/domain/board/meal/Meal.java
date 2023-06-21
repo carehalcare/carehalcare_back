@@ -29,11 +29,14 @@ public class Meal extends BaseTimeEntity {
     @OneToMany(mappedBy = "meal", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<MealImage> images = new ArrayList<>();
 
+    private String category;
+
     @Builder
-    public Meal(String userId, String puserId, String content){
+    public Meal(String userId, String puserId, String content, String category){
         this.userId = userId;
         this.puserId = puserId;
         this.content = content;
+        this.category = category;
     }
 
     public void addImages(MealImage image){

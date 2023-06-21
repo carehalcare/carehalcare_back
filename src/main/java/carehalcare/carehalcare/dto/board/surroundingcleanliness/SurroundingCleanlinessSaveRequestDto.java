@@ -36,6 +36,7 @@ public class SurroundingCleanlinessSaveRequestDto {
                 .puserId(puserId)
                 .cleanliness(cleanliness)
                 .content(content)
+                .category("scleanliness")
                 .build();
     }
 }

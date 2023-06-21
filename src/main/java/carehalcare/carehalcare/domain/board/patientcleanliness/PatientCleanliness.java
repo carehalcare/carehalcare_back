@@ -27,13 +27,16 @@ public class PatientCleanliness extends BaseTimeEntity {
 
     private String content;
 
+    private String category;
+
     @Builder
     public PatientCleanliness(String userId, String puserId, String cleanliness,
-                              String part,String content){
+                              String part,String content, String category){
         this.userId = userId;
         this.puserId = puserId;
         this.cleanliness = cleanliness;
         this.part = part;
         this.content = content;
+        this.category = category;
     }
 }

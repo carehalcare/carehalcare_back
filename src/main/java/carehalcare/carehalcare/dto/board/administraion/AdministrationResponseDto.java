@@ -15,6 +15,7 @@ public class AdministrationResponseDto {
     private String time;
     private String mealStatus;
     private String medicine;
+    private String category;
     private LocalDateTime createdDateTime;
 
     public AdministrationResponseDto(Administration entity){
@@ -24,6 +25,7 @@ public class AdministrationResponseDto {
         this.time=entity.getTime();
         this.mealStatus=entity.getMealStatus();
         this.medicine=entity.getMedicine();
+        this.category=entity.getCategory();
         this.createdDateTime=entity.getCreatedDateTime();
     }
 }

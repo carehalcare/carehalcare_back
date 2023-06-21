@@ -41,6 +41,7 @@ public class ActivitySaveRequestDto {
                 .rehabilitation(rehabilitation)
                 .walkingAssistance(walkingAssistance)
                 .position(position)
+                .category("activities")
                 .build();
     }
 }

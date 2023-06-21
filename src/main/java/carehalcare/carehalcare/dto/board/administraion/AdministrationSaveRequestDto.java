@@ -24,6 +24,7 @@ public class AdministrationSaveRequestDto {
     @ApiModelProperty(name  = "약 종류", example = "약 이름")
     private String medicine;
 
+
     @Builder
     public AdministrationSaveRequestDto(String userId, String puserId, String time,
                                         String mealStatus, String medicine){
@@ -41,6 +42,7 @@ public class AdministrationSaveRequestDto {
                 .time(time)
                 .mealStatus(mealStatus)
                 .medicine(medicine)
+                .category("administrations")
                 .build();
     }
 }

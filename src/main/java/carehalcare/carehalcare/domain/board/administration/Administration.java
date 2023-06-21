@@ -27,14 +27,17 @@ public class Administration extends BaseTimeEntity {
 
     private String medicine;
 
+    private String category;
+
     @Builder
     public Administration(String userId, String puserId, String time,
-                          String mealStatus, String medicine){
+                          String mealStatus, String medicine, String category){
         this.userId = userId;
         this.puserId = puserId;
         this.time = time;
         this.mealStatus = mealStatus;
         this.medicine = medicine;
+        this.category = category;
     }
 
 }

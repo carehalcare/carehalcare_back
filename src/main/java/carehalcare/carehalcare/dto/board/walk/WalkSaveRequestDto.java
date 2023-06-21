@@ -25,6 +25,7 @@ public class WalkSaveRequestDto {
         return Walk.builder()
                 .userId(userId)
                 .puserId(puserId)
+                .category("walks")
                 .build();
     }
 }

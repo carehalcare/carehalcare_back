@@ -27,14 +27,17 @@ public class Activity extends BaseTimeEntity {
 
     private String position;
 
+    private String category;
+
     @Builder
     public Activity (String userId, String puserId, String rehabilitation,
-                     String walkingAssistance, String position){
+                     String walkingAssistance, String position, String category){
         this.userId = userId;
         this.puserId = puserId;
         this.rehabilitation = rehabilitation;
         this.walkingAssistance = walkingAssistance;
         this.position=position;
+        this.category=category;
     }
 
 }

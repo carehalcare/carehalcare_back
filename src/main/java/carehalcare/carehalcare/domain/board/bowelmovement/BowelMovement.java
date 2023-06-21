@@ -25,11 +25,14 @@ public class BowelMovement extends BaseTimeEntity {
 
     private String content;
 
+    private String category;
+
     @Builder
-    public BowelMovement(String userId, String puserId, Long count, String content){
+    public BowelMovement(String userId, String puserId, Long count, String content, String category){
         this.userId = userId;
         this.puserId = puserId;
         this.count = count;
         this.content = content;
+        this.category = category;
     }
 }

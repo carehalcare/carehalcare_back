@@ -25,11 +25,15 @@ public class SurroundingCleanliness extends BaseTimeEntity {
 
     private String content;
 
+    private String category;
+
     @Builder
-    public SurroundingCleanliness(String userId, String puserId, String cleanliness, String content){
+    public SurroundingCleanliness(String userId, String puserId, String cleanliness,
+                                  String content, String category){
         this.userId = userId;
         this.puserId = puserId;
         this.cleanliness = cleanliness;
         this.content = content;
+        this.category = category;
     }
 }

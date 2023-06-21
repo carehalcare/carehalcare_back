@@ -32,6 +32,7 @@ public class MealSaveRequestDto {
                 .userId(userId)
                 .puserId(puserId)
                 .content(content)
+                .category("meals")
                 .build();
     }
 }

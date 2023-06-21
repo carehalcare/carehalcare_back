@@ -25,11 +25,15 @@ public class SleepState extends BaseTimeEntity {
 
     private String content;
 
+    private String category;
+
     @Builder
-    public SleepState(String userId, String puserId, String state, String content){
+    public SleepState(String userId, String puserId, String state,
+                      String content, String category){
         this.userId = userId;
         this.puserId = puserId;
         this.state = state;
         this.content = content;
+        this.category = category;
     }
 }

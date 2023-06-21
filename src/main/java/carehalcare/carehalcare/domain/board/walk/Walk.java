@@ -27,10 +27,13 @@ public class Walk extends BaseTimeEntity {
     @OneToMany(mappedBy = "walk", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WalkImage> walkImage = new ArrayList<>();
 
+    private String category;
+
     @Builder
-    public Walk (String userId, String puserId){
+    public Walk (String userId, String puserId, String category){
         this.userId = userId;
         this.puserId = puserId;
+        this.category = category;
     }
 
     public void addWalkImage(WalkImage image){

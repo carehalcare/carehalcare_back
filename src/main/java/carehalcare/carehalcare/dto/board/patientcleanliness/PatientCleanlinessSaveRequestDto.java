@@ -41,6 +41,7 @@ public class PatientCleanlinessSaveRequestDto {
                 .cleanliness(cleanliness)
                 .part(part)
                 .content(content)
+                .category("pcleanliness")
                 .build();
     }
 }

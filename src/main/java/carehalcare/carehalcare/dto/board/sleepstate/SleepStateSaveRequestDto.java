@@ -36,6 +36,7 @@ public class SleepStateSaveRequestDto {
                 .puserId(puserId)
                 .state(state)
                 .content(content)
+                .category("sleepstates")
                 .build();
     }
 }
