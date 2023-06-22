@@ -1,6 +1,5 @@
 package carehalcare.carehalcare.service.board;
 
-import carehalcare.carehalcare.domain.board.walk.Walk;
 import carehalcare.carehalcare.dto.board.BoardResponseDto;
 import carehalcare.carehalcare.dto.board.activity.ActivityResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseDto;
@@ -16,8 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -41,47 +39,118 @@ public class BoardService {
 
         List<ActivityResponseDto> activityList
                 = activityService.getActivityList(userId, puserId);
+        for(ActivityResponseDto activity : activityList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(activity.getId())
+                    .userId(activity.getUserId())
+                    .puserId(activity.getPuserId())
+                    .category(activity.getCategory())
+                    .createdDateTime(activity.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
+
         List<AdministrationResponseDto> administrationList
                 = administrationService.getList(userId, puserId);
+        for(AdministrationResponseDto administration : administrationList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(administration.getId())
+                    .userId(administration.getUserId())
+                    .puserId(administration.getPuserId())
+                    .category(administration.getCategory())
+                    .createdDateTime(administration.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
+
         List<BowelMovementResponseDto> bowelMovementList
                 = bowelMovementService.getBowelMovementList(userId, puserId);
+        for(BowelMovementResponseDto bowelMovement : bowelMovementList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(bowelMovement.getId())
+                    .userId(bowelMovement.getUserId())
+                    .puserId(bowelMovement.getPuserId())
+                    .category(bowelMovement.getCategory())
+                    .createdDateTime(bowelMovement.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
+
         List<MealResponseDto> mealList
                 = mealService.getMealList(userId, puserId);
+        for(MealResponseDto meal : mealList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(meal.getId())
+                    .userId(meal.getUserId())
+                    .puserId(meal.getPuserId())
+                    .category(meal.getCategory())
+                    .createdDateTime(meal.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
+
         List<PatientCleanlinessResponseDto> patientCleanlinessList
                 = patientCleanlinessService.getPatientCleanlinessList(userId, puserId);
+        for(PatientCleanlinessResponseDto patientCleanliness : patientCleanlinessList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(patientCleanliness.getId())
+                    .userId(patientCleanliness.getUserId())
+                    .puserId(patientCleanliness.getPuserId())
+                    .category(patientCleanliness.getCategory())
+                    .createdDateTime(patientCleanliness.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
+
         List<SleepStateResponseDto> sleepStateList
                 = sleepStateService.getSleepStateList(userId, puserId);
+        for(SleepStateResponseDto sleepState : sleepStateList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(sleepState.getId())
+                    .userId(sleepState.getUserId())
+                    .puserId(sleepState.getPuserId())
+                    .category(sleepState.getCategory())
+                    .createdDateTime(sleepState.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
+
         List<SurroundingCleanlinessResponseDto> surroundingCleanlinessList
                 = surroundingCleanlinessService.getSurroundingCleanlinessList(userId, puserId);
+        for(SurroundingCleanlinessResponseDto surroundingCleanliness : surroundingCleanlinessList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(surroundingCleanliness.getId())
+                    .userId(surroundingCleanliness.getUserId())
+                    .puserId(surroundingCleanliness.getPuserId())
+                    .category(surroundingCleanliness.getCategory())
+                    .createdDateTime(surroundingCleanliness.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
+
         List<WalkResponseDto> walkList
                 = walkService.getWalkList(userId, puserId);
+        for(WalkResponseDto walk : walkList) {
+            BoardResponseDto dto = BoardResponseDto.builder()
+                    .id(walk.getId())
+                    .userId(walk.getUserId())
+                    .puserId(walk.getPuserId())
+                    .category(walk.getCategory())
+                    .createdDateTime(walk.getCreatedDateTime())
+                    .build();
+            boardList.add(dto);
+        }
 
-
-        boardList.add(new BoardResponseDto(activityList));
-        boardList.add(new BoardResponseDto(administrationList));
-        boardList.add(new BoardResponseDto(bowelMovementList));
-        boardList.add(new BoardResponseDto(mealList));
-        boardList.add(new BoardResponseDto(patientCleanlinessList));
-        boardList.add(new BoardResponseDto(sleepStateList));
-        boardList.add(new BoardResponseDto(surroundingCleanlinessList));
-        boardList.add(new BoardResponseDto(walkList));
-
-
+        Collections.sort(boardList, new SortByDateTime().reversed());
         return boardList;
     }
 }
 
 
-/*for(AdministrationResponseDto administration : administrationList){
-            BoardResponseDto dto = BoardResponseDto.builder()
-                    .id(administration.getId())
-                    .userId(administration.getUserId())
-                    .puserId(administration.getPuserId())
-                    .content1(administration.getTime())
-                    .content2(administration.getMealStatus())
-                    .content3(administration.getMedicine())
-                    .category(administration.getCategory())
-                    .createdDateTime(administration.getCreatedDateTime())
-                    .build();
-            boardList.add(dto);
-        }*/
+class SortByDateTime implements Comparator<BoardResponseDto> {
+    @Override
+    public int compare(BoardResponseDto a, BoardResponseDto b) {
+        return a.getCreatedDateTime().compareTo(b.getCreatedDateTime());
+    }
+}
+
