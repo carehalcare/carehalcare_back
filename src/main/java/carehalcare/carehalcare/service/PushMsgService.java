@@ -4,12 +4,11 @@ import carehalcare.carehalcare.domain.notice.NoticeRepository;
 import carehalcare.carehalcare.domain.user.PatientInfoRepository;
 import carehalcare.carehalcare.domain.user.User;
 import carehalcare.carehalcare.domain.user.UserRepository;
-import carehalcare.carehalcare.dto.user.PatientInfoPushMsgDto;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 
 @RequiredArgsConstructor
