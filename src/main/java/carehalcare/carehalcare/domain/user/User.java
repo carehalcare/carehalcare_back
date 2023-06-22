@@ -42,6 +42,8 @@ public class User extends BaseTimeEntity {
     private String puserId; //보호자 아이디
     private String cuserId; // 간병인 아이디
 
+    private String fcmToken;
+
     @ManyToMany
     @JoinTable(
             name = "user_authority",
@@ -71,11 +73,14 @@ public class User extends BaseTimeEntity {
         this.cuserId = cuserId;
     }
 
-    // update 메서드
-    // public Users update(){return this;}
-
     /* 권한 설정 */
     public void addAuthorities(Set<Authority> authority){
         this.authorities = authority;
+    }
+
+    /* fcm 토큰 */
+    public User updateFcmToken(String fcmToken){
+        this.fcmToken = fcmToken;
+        return this;
     }
 }

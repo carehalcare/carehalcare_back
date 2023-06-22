@@ -6,6 +6,7 @@ import carehalcare.carehalcare.dto.user.PatientInfoSaveRequestDto;
 import carehalcare.carehalcare.dto.user.PatientInfoUpdateRequestDto;
 import carehalcare.carehalcare.dto.user.PatientSetRequestDto;
 import carehalcare.carehalcare.service.user.PatientService;
+import com.google.firebase.messaging.FirebaseMessagingException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +52,8 @@ public class PatientController {
     /* 환자 정보 수정 */
     @ApiOperation(value="환자 정보 수정")
     @PutMapping("/patients/info")
-    public Long updatePatientInfo(@RequestBody PatientInfoUpdateRequestDto requestDto){
+    public Long updatePatientInfo(@RequestBody PatientInfoUpdateRequestDto requestDto)
+            throws FirebaseMessagingException {
         return patientService.updatePatientInfo(requestDto);
     }
 
