@@ -67,7 +67,7 @@ public class PatientService {
         }
     }
 
-    /* 환자 정보 수정 푸시메시지(알림) */
+    /* 환자 정보 수정 시 간병인에게 푸시메시지(알림) 전송 */
     @Transactional
     public void sendPushMsg(PatientInfo patientInfo) throws FirebaseMessagingException {
         User puser = userRepository.findByUserId(patientInfo.getUserId())
@@ -76,8 +76,8 @@ public class PatientService {
         User cuser = userRepository.findByUserId(puser.getCuserId())
                 .orElseThrow(IllegalArgumentException::new);
 
-        fcmService.sendMessage(cuser.getFcmToken(), patientInfo.getPname()+" 환자의 정보가 수정되었습니다.");
-        System.out.println(patientInfo.getPname()+" 환자의 정보가 수정되었습니다.");
+        fcmService.sendMessage(cuser.getFcmToken(), "["+patientInfo.getPname()+"] 환자의 정보가 수정되었습니다.");
+        System.out.println("["+patientInfo.getPname()+"] 환자의 정보가 수정되었습니다.");
     }
 
 }

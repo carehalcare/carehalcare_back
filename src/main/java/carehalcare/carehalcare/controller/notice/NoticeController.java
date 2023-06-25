@@ -4,6 +4,7 @@ import carehalcare.carehalcare.dto.notice.NoticeResponseDto;
 import carehalcare.carehalcare.dto.notice.NoticeSaveRequestDto;
 import carehalcare.carehalcare.dto.notice.NoticeUpdateRequestDto;
 import carehalcare.carehalcare.service.notice.NoticeService;
+import com.google.firebase.messaging.FirebaseMessagingException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,8 @@ public class NoticeController {
     /* 공지사항 등록 */
     @ApiOperation(value="공지사항 등록")
     @PostMapping("/notices")
-    public Long saveNotice(@RequestBody NoticeSaveRequestDto requestDto){
+    public Long saveNotice(@RequestBody NoticeSaveRequestDto requestDto)
+            throws FirebaseMessagingException {
         return noticeService.saveNotice(requestDto);
     }
 

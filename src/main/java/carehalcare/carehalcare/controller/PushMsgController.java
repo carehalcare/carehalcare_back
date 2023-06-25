@@ -21,8 +21,4 @@ public class PushMsgController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 
-    /*@GetMapping("/pushmsg")
-    public List<PatientInfoPushMsgDto> findCuserIdByPuserId(@RequestParam String puserId){
-        return pushMsgService.
-    }*/
 }
