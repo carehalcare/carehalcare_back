@@ -1,7 +1,9 @@
 package carehalcare.carehalcare.controller.board;
 
+import carehalcare.carehalcare.dto.board.activity.ActivityHistResponseDto;
 import carehalcare.carehalcare.dto.board.activity.ActivityResponseDto;
 import carehalcare.carehalcare.dto.board.activity.ActivitySaveRequestDto;
+import carehalcare.carehalcare.dto.board.activity.ActivityUpdateRequestDto;
 import carehalcare.carehalcare.service.board.ActivityService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -38,7 +40,7 @@ public class ActivityController {
     public List<ActivityResponseDto> getActivityList(
             @PathVariable("uid") String userId,
             @PathVariable("puid") String puserId) throws Exception{
-        return this.activityService.getActivityList(userId, puserId);
+        return activityService.getActivityList(userId, puserId);
     }
 
     /* 활동 기록 상세 조회 */
@@ -58,4 +60,28 @@ public class ActivityController {
         activityService.deleteActivity(id);
         return ResponseEntity.noContent().build();
     }
+
+    /* 활동 기록 수정 */
+    @ApiOperation(value="활동 기록 수정")
+    @PutMapping("/activities")
+    public Long updateActivity(@RequestBody ActivityUpdateRequestDto requestDto){
+        return activityService.updateActivity(requestDto);
+    }
+
+    /* 활동 기록 변경 이력 리스트 조회 */
+    @ApiOperation(value="활동 기록 변경 이력 리스트 조회")
+    @GetMapping("/activityhists/list/{id}")
+    public List<ActivityHistResponseDto> getActivityHists(
+            @PathVariable("id") Long id) throws Exception{
+        return activityService.getActivityHists(id);
+    }
+
+    /* 활동 기록 변경 이력 상세 조회 */
+    @ApiOperation(value="활동 기록 변경 이력 상세 조회")
+    @GetMapping("/activityhists/{id}/{revNum}")
+    public ActivityHistResponseDto getActivityHist(@PathVariable("id") Long id,
+                                @PathVariable("revNum") Integer revNum) throws Exception{
+        return activityService.getActivityHist(id, revNum);
+    }
+
 }

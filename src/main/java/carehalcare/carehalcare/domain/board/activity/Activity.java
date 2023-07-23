@@ -4,9 +4,13 @@ import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.AuditOverride;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
+@AuditOverride(forClass=BaseTimeEntity.class)
+@Audited
 @Getter
 @NoArgsConstructor
 @Entity
@@ -40,4 +44,11 @@ public class Activity extends BaseTimeEntity {
         this.category=category;
     }
 
+    public Activity updateActivity(String rehabilitation,String walkingAssistance,
+                                   String position){
+        this.rehabilitation=rehabilitation;
+        this.walkingAssistance=walkingAssistance;
+        this.position=position;
+        return this;
+    }
 }
