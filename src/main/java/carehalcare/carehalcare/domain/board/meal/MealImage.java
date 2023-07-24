@@ -1,10 +1,11 @@
 package carehalcare.carehalcare.domain.board.meal;
 
 import carehalcare.carehalcare.domain.BaseTimeEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 
@@ -23,12 +24,14 @@ public class MealImage extends BaseTimeEntity {
 
     private String filePath;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     @ManyToOne
     @JoinColumn(name = "mealId")
     private Meal meal;
 
     @Builder
-    public MealImage(String originalFilename, String storeFilename, String filePath){
+    public MealImage(String originalFilename, String storeFilename,
+                     String filePath){
         this.originalFilename=originalFilename;
         this.storeFilename=storeFilename;
         this.filePath=filePath;
@@ -40,4 +43,5 @@ public class MealImage extends BaseTimeEntity {
             meal.getImages().add(this);
         }
     }
+
 }

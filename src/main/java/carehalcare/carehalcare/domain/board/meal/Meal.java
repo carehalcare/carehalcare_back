@@ -4,11 +4,16 @@ import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.AuditOverride;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@AuditOverride(forClass=BaseTimeEntity.class)
+@Audited
 @Getter
 @NoArgsConstructor
 @Entity
@@ -26,10 +31,11 @@ public class Meal extends BaseTimeEntity {
 
     private String content;
 
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     @OneToMany(mappedBy = "meal", cascade=CascadeType.ALL, orphanRemoval = true)
     private List<MealImage> images = new ArrayList<>();
 
-    private String category;
+    private String category; // 전체카테고리에서 상세조회하기 위함
 
     @Builder
     public Meal(String userId, String puserId, String content, String category){
@@ -45,4 +51,11 @@ public class Meal extends BaseTimeEntity {
             image.setMeal(this);
         }
     }
+
+    public Meal updateMeal(String content){
+        this.content = content;
+        return this;
+    }
+
+
 }

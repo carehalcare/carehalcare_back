@@ -1,8 +1,6 @@
 package carehalcare.carehalcare.controller.board;
 
-import carehalcare.carehalcare.dto.board.meal.MealImageVO;
-import carehalcare.carehalcare.dto.board.meal.MealResponseDto;
-import carehalcare.carehalcare.dto.board.meal.MealSaveRequestDto;
+import carehalcare.carehalcare.dto.board.meal.*;
 import carehalcare.carehalcare.service.board.meal.MealService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -65,6 +63,30 @@ public class MealController {
     public ResponseEntity<?> deleteMeal(@PathVariable("id") Long id) throws Exception{
         mealService.deleteMeal(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /* 식사 기록 수정 */
+    @ApiOperation(value="식사 기록 수정")
+    @PutMapping("/meals")
+    public Long updateMeal(@RequestBody MealUpdateRequestDto requestDto) throws IOException{
+        return mealService.updateMeal(requestDto);
+    }
+
+    /* 식사 기록 변경 이력 리스트 조회 */
+    @ApiOperation(value="식사 기록 변경 이력 리스트 조회")
+    @GetMapping("/mealhists/list/{id}")
+    public List<MealHistResponseDto> getMealHists(
+            @PathVariable("id") Long id) throws Exception{
+        return mealService.getMealHists(id);
+    }
+
+    /* 식사 기록 변경 이력 상세 조회 */
+    @ApiOperation(value="식사 기록 변경 이력 상세 조회")
+    @GetMapping("/mealhists/{id}/{revNum}")
+    public MealHistResponseDto getMealHist(
+            @PathVariable("id") Long id,
+            @PathVariable("revNum") Integer revNum) throws Exception{
+        return mealService.getMealHist(id, revNum);
     }
 
 }
