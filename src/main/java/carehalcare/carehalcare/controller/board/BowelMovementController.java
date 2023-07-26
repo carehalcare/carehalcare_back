@@ -1,7 +1,9 @@
 package carehalcare.carehalcare.controller.board;
 
+import carehalcare.carehalcare.dto.board.bowelmovement.BowelMovementHistResponseDto;
 import carehalcare.carehalcare.dto.board.bowelmovement.BowelMovementResponseDto;
 import carehalcare.carehalcare.dto.board.bowelmovement.BowelMovementSaveRequestDto;
+import carehalcare.carehalcare.dto.board.bowelmovement.BowelMovementUpdateRequestDto;
 import carehalcare.carehalcare.service.board.BowelMovementService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -59,4 +61,29 @@ public class BowelMovementController {
         bowelMovementService.deleteBowelMovement(id);
         return ResponseEntity.noContent().build();
     }
+
+    /* 배변 기록 수정 */
+    @ApiOperation(value="배변 기록 수정")
+    @PutMapping("/bowelmovements")
+    public Long updateBowelMovement(@RequestBody BowelMovementUpdateRequestDto requestDto){
+        return bowelMovementService.updateBowelMovement(requestDto);
+    }
+
+    /* 배변 기록 변경 이력 리스트 조회 */
+    @ApiOperation(value="배변 기록 변경 이력 리스트 조회")
+    @GetMapping("/bowelmovementhists/list/{id}")
+    public List<BowelMovementHistResponseDto> getBowelMovementHists(
+            @PathVariable("id") Long id) throws Exception{
+        return bowelMovementService.getBowelMovementHists(id);
+    }
+
+    /* 배변 기록 변경 이력 상세 조회 */
+    @ApiOperation(value="배변 기록 변경 이력 상세 조회")
+    @GetMapping("/bowelmovementhists/{id}/{revNum}")
+    public BowelMovementHistResponseDto getBowelMovementHist(
+            @PathVariable("id") Long id,
+            @PathVariable("revNum") Integer revNum) throws Exception{
+        return bowelMovementService.getBowelMovementHist(id, revNum);
+    }
+
 }
