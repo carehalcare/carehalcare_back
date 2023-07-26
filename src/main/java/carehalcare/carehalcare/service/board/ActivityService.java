@@ -70,7 +70,8 @@ public class ActivityService {
         List<Object[]> hists = auditReader.createQuery()
                 .forRevisionsOfEntity(Activity.class, false, false)
                 .add(AuditEntity.property("id").eq(id))
-                .add(AuditEntity.revisionType().eq(RevisionType.MOD))
+                .add(AuditEntity.revisionType().between(RevisionType.ADD, RevisionType.MOD))
+                //.add(AuditEntity.revisionType().eq(RevisionType.MOD))
                 .addOrder(AuditEntity.property("modifiedDateTime").desc())
                 .getResultList();
 
