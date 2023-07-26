@@ -1,7 +1,9 @@
 package carehalcare.carehalcare.controller.board;
 
+import carehalcare.carehalcare.dto.board.administraion.AdministrationHistResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationResponseDto;
 import carehalcare.carehalcare.dto.board.administraion.AdministrationSaveRequestDto;
+import carehalcare.carehalcare.dto.board.administraion.AdministrationUpdateRequestDto;
 import carehalcare.carehalcare.service.board.AdministrationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -58,5 +60,29 @@ public class AdministrationController {
     public ResponseEntity<?> deleteAdministration(@PathVariable("id") Long id){
         administrationService.deleteAdministration(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /* 투약 기록 수정 */
+    @ApiOperation(value="투약 기록 수정")
+    @PutMapping("/administrations")
+    public Long updateAdministration(@RequestBody AdministrationUpdateRequestDto requestDto){
+        return administrationService.updateAdministration(requestDto);
+    }
+
+    /* 투약 기록 변경 이력 리스트 조회 */
+    @ApiOperation(value="투약 기록 변경 이력 리스트 조회")
+    @GetMapping("/administrationhists/list/{id}")
+    public List<AdministrationHistResponseDto> getAdministrationHists(
+            @PathVariable("id") Long id) throws Exception{
+        return administrationService.getAdministrationHists(id);
+    }
+
+    /* 투약 기록 변경 이력 상세 조회 */
+    @ApiOperation(value="투약 기록 변경 이력 상세 조회")
+    @GetMapping("/administrationhists/{id}/{revNum}")
+    public AdministrationHistResponseDto getAdministrationHist(
+            @PathVariable("id") Long id,
+            @PathVariable("revNum") Integer revNum) throws Exception {
+        return administrationService.getAdministrationHist(id, revNum);
     }
 }

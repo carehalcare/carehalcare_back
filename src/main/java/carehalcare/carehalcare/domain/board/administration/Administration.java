@@ -4,9 +4,13 @@ import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.AuditOverride;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
+@AuditOverride(forClass=BaseTimeEntity.class)
+@Audited
 @Getter
 @NoArgsConstructor
 @Entity
@@ -38,6 +42,14 @@ public class Administration extends BaseTimeEntity {
         this.mealStatus = mealStatus;
         this.medicine = medicine;
         this.category = category;
+    }
+
+    public Administration updateAdministration(
+            String time, String mealStatus, String medicine){
+        this.time = time;
+        this.mealStatus = mealStatus;
+        this.medicine = medicine;
+        return this;
     }
 
 }
