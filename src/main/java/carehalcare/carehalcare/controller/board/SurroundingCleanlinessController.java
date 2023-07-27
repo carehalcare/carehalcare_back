@@ -1,7 +1,9 @@
 package carehalcare.carehalcare.controller.board;
 
+import carehalcare.carehalcare.dto.board.surroundingcleanliness.SurroundingCleanlinessHistResponseDto;
 import carehalcare.carehalcare.dto.board.surroundingcleanliness.SurroundingCleanlinessResponseDto;
 import carehalcare.carehalcare.dto.board.surroundingcleanliness.SurroundingCleanlinessSaveRequestDto;
+import carehalcare.carehalcare.dto.board.surroundingcleanliness.SurroundingCleanlinessUpdateRequestDto;
 import carehalcare.carehalcare.service.board.SurroundingCleanlinessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -57,6 +59,30 @@ public class SurroundingCleanlinessController {
     public ResponseEntity<?> deleteSurroundingCleanliness(@PathVariable("id") Long id){
         surroundingCleanlinessService.deleteSurroundingCleanliness(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /* 주변 환경 청결 기록 수정 */
+    @ApiOperation(value="활동 기록 수정")
+    @PutMapping("/scleanliness")
+    public Long updateSCleanliness(@RequestBody SurroundingCleanlinessUpdateRequestDto requestDto){
+        return surroundingCleanlinessService.updateSCleanliness(requestDto);
+    }
+
+    /* 주변 환경 청결 기록 변경 이력 리스트 조회 */
+    @ApiOperation(value="활동 기록 변경 이력 리스트 조회")
+    @GetMapping("/scleanlinesshists/list/{id}")
+    public List<SurroundingCleanlinessHistResponseDto> getSCleanlinessHists(
+            @PathVariable("id") Long id) throws Exception{
+        return surroundingCleanlinessService.getSCleanlinessHists(id);
+    }
+
+    /* 주변 환경 청결 기록 변경 이력 상세 조회 */
+    @ApiOperation(value="활동 기록 변경 이력 상세 조회")
+    @GetMapping("/scleanlinesshists/{id}/{revNum}")
+    public SurroundingCleanlinessHistResponseDto getSCleanlinessHist(
+            @PathVariable("id") Long id,
+            @PathVariable("revNum") Integer revNum) throws Exception{
+        return surroundingCleanlinessService.getSCleanlinessHist(id, revNum);
     }
 
 }

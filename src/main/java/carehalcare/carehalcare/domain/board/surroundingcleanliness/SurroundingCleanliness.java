@@ -4,9 +4,13 @@ import carehalcare.carehalcare.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.AuditOverride;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
+@AuditOverride(forClass=BaseTimeEntity.class)
+@Audited
 @Getter
 @NoArgsConstructor
 @Entity
@@ -35,5 +39,12 @@ public class SurroundingCleanliness extends BaseTimeEntity {
         this.cleanliness = cleanliness;
         this.content = content;
         this.category = category;
+    }
+
+    public SurroundingCleanliness updateSurroundingCleanliness(
+            String cleanliness, String content){
+        this.cleanliness = cleanliness;
+        this.content = content;
+        return this;
     }
 }
