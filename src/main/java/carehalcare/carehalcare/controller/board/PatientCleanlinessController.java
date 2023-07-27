@@ -1,7 +1,9 @@
 package carehalcare.carehalcare.controller.board;
 
+import carehalcare.carehalcare.dto.board.patientcleanliness.PatientCleanlinessHistResponseDto;
 import carehalcare.carehalcare.dto.board.patientcleanliness.PatientCleanlinessResponseDto;
 import carehalcare.carehalcare.dto.board.patientcleanliness.PatientCleanlinessSaveRequestDto;
+import carehalcare.carehalcare.dto.board.patientcleanliness.PatientCleanlinessUpdateRequestDto;
 import carehalcare.carehalcare.service.board.PatientCleanlinessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -57,5 +59,29 @@ public class PatientCleanlinessController {
     public ResponseEntity<?> deletePatientCleanliness(@PathVariable("id") Long id){
         patientCleanlinessService.deletePatientCleanliness(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /* 환자 청결 기록 수정 */
+    @ApiOperation(value="환자 청결 기록 수정")
+    @PutMapping("/pcleanliness")
+    public Long updatePatientCleanliness(@RequestBody PatientCleanlinessUpdateRequestDto requestDto){
+        return patientCleanlinessService.updatePatientCleanliness(requestDto);
+    }
+
+    /* 환자 청결 기록 변경 이력 리스트 조회 */
+    @ApiOperation(value="환자 청결 기록 변경 이력 리스트 조회")
+    @GetMapping("/pcleanlinesshists/list/{id}")
+    public List<PatientCleanlinessHistResponseDto> getPatientCleanlinessHists(
+            @PathVariable("id") Long id) throws Exception{
+        return patientCleanlinessService.getPatientCleanlinessHists(id);
+    }
+
+    /* 환자 청결 기록 변경 이력 상세 조회 */
+    @ApiOperation(value="환자 청결 기록 변경 이력 상세 조회")
+    @GetMapping("/pcleanlinesshists/{id}/{revNum}")
+    public PatientCleanlinessHistResponseDto getPatientCleanlinessHist(
+            @PathVariable("id") Long id,
+            @PathVariable("revNum") Integer revNum) throws Exception{
+        return patientCleanlinessService.getPatientCleanlinessHist(id, revNum);
     }
 }
