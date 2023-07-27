@@ -1,7 +1,9 @@
 package carehalcare.carehalcare.controller.board;
 
+import carehalcare.carehalcare.dto.board.sleepstate.SleepStateHistResponseDto;
 import carehalcare.carehalcare.dto.board.sleepstate.SleepStateResponseDto;
 import carehalcare.carehalcare.dto.board.sleepstate.SleepStateSaveRequestDto;
+import carehalcare.carehalcare.dto.board.sleepstate.SleepStateUpdateRequestDto;
 import carehalcare.carehalcare.service.board.SleepStateService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -57,5 +59,29 @@ public class SleepStateController {
     public ResponseEntity<?> deleteSleepState(@PathVariable("id") Long id){
         sleepStateService.deleteSleepState(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /* 수면 상태 기록 수정 */
+    @ApiOperation(value="수면 상태 기록 수정")
+    @PutMapping("/sleepstates")
+    public Long updateSleepState(@RequestBody SleepStateUpdateRequestDto requestDto){
+        return sleepStateService.updateSleepState(requestDto);
+    }
+
+    /* 수면 상태 기록 변경 이력 리스트 조회 */
+    @ApiOperation(value="수면 상태 기록 변경 이력 리스트 조회")
+    @GetMapping("/sleepstatehists/list/{id}")
+    public List<SleepStateHistResponseDto> getSleepStateHists(
+            @PathVariable("id") Long id) throws Exception{
+        return sleepStateService.getSleepStateHists(id);
+    }
+
+    /* 수면 상태 기록 변경 이력 상세 조회 */
+    @ApiOperation(value="수면 상태 기록 변경 이력 상세 조회")
+    @GetMapping("/sleepstatehists/{id}/{revNum}")
+    public SleepStateHistResponseDto getSleepStateHist(
+            @PathVariable("id") Long id,
+            @PathVariable("revNum") Integer revNum) throws Exception{
+        return sleepStateService.getSleepStateHist(id, revNum);
     }
 }
