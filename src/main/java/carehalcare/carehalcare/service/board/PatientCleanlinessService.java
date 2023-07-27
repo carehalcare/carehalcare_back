@@ -1,9 +1,7 @@
 package carehalcare.carehalcare.service.board;
 
-import carehalcare.carehalcare.domain.board.administration.Administration;
 import carehalcare.carehalcare.domain.board.patientcleanliness.PatientCleanliness;
 import carehalcare.carehalcare.domain.board.patientcleanliness.PatientCleanlinessRepository;
-import carehalcare.carehalcare.dto.board.administraion.AdministrationHistResponseDto;
 import carehalcare.carehalcare.dto.board.patientcleanliness.PatientCleanlinessHistResponseDto;
 import carehalcare.carehalcare.dto.board.patientcleanliness.PatientCleanlinessResponseDto;
 import carehalcare.carehalcare.dto.board.patientcleanliness.PatientCleanlinessSaveRequestDto;
