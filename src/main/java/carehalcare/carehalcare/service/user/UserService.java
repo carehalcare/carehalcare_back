@@ -3,27 +3,21 @@ package carehalcare.carehalcare.service.user;
 import carehalcare.carehalcare.domain.user.Authority;
 import carehalcare.carehalcare.domain.user.User;
 import carehalcare.carehalcare.domain.user.UserRepository;
-import carehalcare.carehalcare.dto.user.user.LoginDto;
-import carehalcare.carehalcare.dto.user.user.TokenDto;
-import carehalcare.carehalcare.dto.user.user.UserResponseDto;
-import carehalcare.carehalcare.dto.user.user.UserSaveRequestDto;
+import carehalcare.carehalcare.dto.user.mypage.UserNameRequestDto;
+import carehalcare.carehalcare.dto.user.user.*;
 import carehalcare.carehalcare.jwt.JwtFilter;
 import carehalcare.carehalcare.jwt.TokenProvider;
-import carehalcare.carehalcare.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -88,4 +82,12 @@ public class UserService {
         }
     }
 
+    /* 사용자 이름 조회 - 마이페이지 */
+    @Transactional(readOnly = true)
+    public UserNameRequestDto findUserNameByUserId(String userId){
+        Optional<User> user = userRepository.findByUserId(userId);
+        return new UserNameRequestDto(user.get());
+
+    }
+    
 }
